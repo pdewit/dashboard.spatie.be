@@ -2623,6 +2623,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/components/Weather.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__atoms_Tile__ = __webpack_require__("./resources/js/components/atoms/Tile.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__atoms_Tile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__atoms_Tile__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helpers__ = __webpack_require__("./resources/js/helpers.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__("./node_modules/axios/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        Tile: __WEBPACK_IMPORTED_MODULE_0__atoms_Tile___default.a
+    },
+
+    props: ['position'],
+
+    data: function data() {
+        return {
+            sequence: 1
+        };
+    },
+    created: function created() {
+        setInterval(this.addSequence, 60000);
+    },
+
+
+    methods: {
+        addClassModifiers: __WEBPACK_IMPORTED_MODULE_1__helpers__["a" /* addClassModifiers */],
+
+        addSequence: function addSequence() {
+            this.sequence++;
+        }
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/components/atoms/OfficeTemperature.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -44432,27 +44483,37 @@ var render = function() {
       _c(
         "section",
         _vm._l(_vm.problems, function(problem) {
-          return _c("div", [
-            _c("h2", [_vm._v(_vm._s(problem.road))]),
-            _vm._v(" "),
-            _c(
-              "ul",
-              _vm._l(problem.events.roadWorks, function(roadWork) {
-                return _c("li", { staticClass: "traffic-li" }, [
-                  _c("span", [_vm._v(_vm._s(roadWork.description))])
-                ])
-              })
-            ),
-            _vm._v(" "),
-            _c(
-              "ul",
-              _vm._l(problem.events.trafficJams, function(trafficJam) {
-                return _c("li", { staticClass: "traffic-li" }, [
-                  _c("span", [_vm._v(_vm._s(trafficJam.description))])
-                ])
-              })
-            )
-          ])
+          return _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: problem.events.trafficJams.length > 0,
+                  expression: "problem.events.trafficJams.length > 0"
+                }
+              ]
+            },
+            [
+              _c("h2", [_vm._v(_vm._s(problem.road))]),
+              _vm._v(" "),
+              _c(
+                "ul",
+                _vm._l(problem.events.trafficJams, function(trafficJam) {
+                  return _c("li", { staticClass: "traffic-li" }, [
+                    _c("span", [
+                      _vm._v(
+                        _vm._s(trafficJam.distance) +
+                          "m - " +
+                          _vm._s(trafficJam.description)
+                      )
+                    ])
+                  ])
+                })
+              )
+            ]
+          )
         })
       )
     ]
@@ -44812,6 +44873,42 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-b60e953a", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-d19c3428\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/js/components/Weather.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "tile",
+    { attrs: { position: _vm.position, modifiers: "overflow transparent" } },
+    [
+      _c("section", [
+        _c("img", {
+          attrs: {
+            src:
+              "https://api.buienradar.nl/image/1.0/RadarMapNL?w=500&h=512&a=" +
+              _vm.sequence,
+            alt: "Image"
+          }
+        })
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d19c3428", module.exports)
   }
 }
 
@@ -55888,6 +55985,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_Uptime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_Uptime__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_Traffic__ = __webpack_require__("./resources/js/components/Traffic.vue");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_Traffic___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__components_Traffic__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_Weather__ = __webpack_require__("./resources/js/components/Weather.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_Weather___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__components_Weather__);
+
 
 
 
@@ -55921,7 +56021,8 @@ new __WEBPACK_IMPORTED_MODULE_2_vue___default.a({
         TimeWeather: __WEBPACK_IMPORTED_MODULE_11__components_TimeWeather___default.a,
         Twitter: __WEBPACK_IMPORTED_MODULE_12__components_Twitter___default.a,
         Uptime: __WEBPACK_IMPORTED_MODULE_13__components_Uptime___default.a,
-        Traffic: __WEBPACK_IMPORTED_MODULE_14__components_Traffic___default.a
+        Traffic: __WEBPACK_IMPORTED_MODULE_14__components_Traffic___default.a,
+        Weather: __WEBPACK_IMPORTED_MODULE_15__components_Weather___default.a
     },
 
     created: function created() {
@@ -56534,6 +56635,54 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-df3c4dc0", Component.options)
   } else {
     hotAPI.reload("data-v-df3c4dc0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Weather.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/components/Weather.vue")
+/* template */
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-d19c3428\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/js/components/Weather.vue")
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\js\\components\\Weather.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d19c3428", Component.options)
+  } else {
+    hotAPI.reload("data-v-d19c3428", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true

@@ -1,16 +1,16 @@
 <template>
     <tile :position="position" modifiers="overflow transparent">
         <section>
-            <div v-for="problem in problems">
+            <div v-for="problem in problems" v-show="problem.events.trafficJams.length > 0">
                 <h2>{{ problem.road }}</h2>
-                <ul>
-                    <li class="traffic-li" v-for="roadWork in problem.events.roadWorks">
-                        <span>{{ roadWork.description }}</span>
-                    </li>
-                </ul>
+                <!--<ul>-->
+                    <!--<li class="traffic-li" v-for="roadWork in problem.events.roadWorks">-->
+                        <!--<span>{{ roadWork.description }}</span>-->
+                    <!--</li>-->
+                <!--</ul>-->
                 <ul>
                     <li class="traffic-li" v-for="trafficJam in problem.events.trafficJams">
-                        <span>{{ trafficJam.description }}</span>
+                        <span>{{ trafficJam.distance }}m - {{ trafficJam.description }}</span>
                     </li>
                 </ul>
             </div>
