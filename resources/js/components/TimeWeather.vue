@@ -9,7 +9,6 @@
                     <span class="time-weather__weather__description">
                         <i class="wi" :class="weather.iconClass"></i>
                     </span>
-                    <office-temperature />
                 </span>
             </time>
             <span class="time-weather__time-zone">{{ weatherCity }}</span>
@@ -25,7 +24,6 @@ import OfficeTemperature from "./atoms/OfficeTemperature";
 
 export default {
     components: {
-        OfficeTemperature,
         Tile,
     },
 
